@@ -34,6 +34,10 @@
     <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
+    <!-- PWA  -->
+    <meta name="theme-color" content="#6777ef"/>
+    <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
 
 </head>
 <body class="bodyU">
@@ -154,6 +158,15 @@
 
     {{-- Vue --}}
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <script src="{{ asset('/sw.js') }}"></script>
+    <script>
+        if (!navigator.serviceWorker.controller) {
+            navigator.serviceWorker.register("/sw.js").then(function (reg) {
+                console.log("Service worker has been registered for scope: " + reg.scope);
+            });
+        }
+    </script>
     
     
 </body>
